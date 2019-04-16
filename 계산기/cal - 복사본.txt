@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta http-equiv="content-type" content="text/html"; charset="utf-8" />
+
+<title>Time</title>
+
+    </head>
+    <style>
+         *{
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+             -ms-user-select: none; -moz-user-select: -moz-none; -webkit-user-select: none; -khtml-user-select: none; user-select:none;
+        }
+        body{
+            background-color:rgba(16,16,16,0.1);
+        }
+        #calculator{
+            position:relative;
+            width:320px;
+            height:520px;
+            margin:0 auto;
+            top:100px;
+            border-radius:7px;
+            box-shadow: 5px 5px 50px -20px;
+            
+        }
+        #buttons{
+            position:relative;
+            width:320px;
+            height:400px;
+            background:white;
+            border-bottom-left-radius:7px;
+            border-bottom-right-radius:7px;
+        }
+        .button{
+            width:80px;
+            height:80px;
+            margin:0;
+            padding:0;
+            border:0;
+            background:transparent;
+            float:left;
+        }
+        #screen{
+            width:320px;
+            height:120px;
+            padding:5px;
+            background:#f8f8f8;
+            border-top-left-radius:7px;
+            border-top-right-radius: 7px;
+        }
+        p{
+            width:95%;
+            margin-top:15px;
+            margin-bottom:0px;
+            margin-right:5%;
+            text-align:right;
+        }
+        #output{
+            font-size:30px;
+            font-weight: 600;
+        }
+        #input{
+            font-weight:600;
+            opacity:0.4;
+        }
+        .gray_dot{
+            width:10px;
+            height:10px;
+            border-radius:5px;
+            background:gray;
+            margin:5px;
+            float:left;
+            opacity:0.3;
+        }
+        .button:not(.circle){
+            font-size:18px;
+            font-weight:600;
+        }
+        .circle button{
+            width:50px;
+            height:50px;
+            margin:15px;
+            border-radius:25px;
+            padding-bottom:8px;
+            border:0;
+            color:white;
+            font-size:30px;
+            font-weight:550;
+            text-align:center;
+            box-shadow: 3px 3px 7px 0px #ccc;
+        }
+        #x button{
+            padding-bottom:5px;
+            background:#f47474;
+        }
+        #divide button{
+            padding-bottom:5px;
+            background:#d058e8;
+        }
+        #minus button{
+            padding-bottom:5px;
+            font-weight:800;
+            background:#7ab4f7;
+        }
+        #plus button{
+            background:#f58e24;
+        }
+        #equal button{
+            background:#24cb83;
+        }
+        button{
+           outline:0;
+        }
+        button:active{
+            opacity:0.3;
+        }
+    </style>
+    <script>
+        var str="";
+        function value_input(x){
+            str+=x;
+            document.getElementById("input").innerHTML=str;
+        }
+        function operator_input(x){
+            str+=" "+x+" ";
+            document.getElementById("input").innerHTML=str;
+        }
+        function reset(){
+            str=""
+            document.getElementById("input").innerHTML=str;
+        }
+        function dot(){
+            str+="."
+            document.getElementById("input").innerHTML=str;
+        }
+    </script>
+    <body>
+        <div id="calculator">
+            <div id="screen">
+                <div class="gray_dot"></div>
+                <div class="gray_dot"></div>
+                <div class="gray_dot"></div>
+                <p id="output">
+                    4,152
+                </p>
+                <p id="input">
+                    3,250 + 740 + 482 - 318
+                </p>
+            </div>
+            <div id="buttons">
+                <button onclick="reset()" class="button" id="C">C</button>
+                <button class="button" id="pm">+/-</button>
+                <button class="button" id="percent">%</button>
+                <div class="button circle" id="divide"><button onclick="operator_input('÷')">÷</button></div>
+                <button class="button" id="7" onclick="value_input(7)">7</button>
+                <button class="button" id="8" onclick="value_input(8)">8</button>
+                <button class="button" id="9" onclick="value_input(9)">9</button>
+                <div class="button circle" id="x"><button onclick="operator_input('x')">x</button></div>
+                <button class="button" id="4" onclick="value_input(4)">4</button>
+                <button class="button" id="5" onclick="value_input(5)">5</button>
+                <button class="button" id="6" onclick="value_input(6)">6</button>
+                <div class="button circle" id="minus"><button onclick="operator_input('-')">─</button></div>
+                <button class="button" id="1" onclick="value_input(1)">1</button>
+                <button class="button" id="2" onclick="value_input(2)">2</button>
+                <button class="button" id="3" onclick="value_input(3)">3</button>
+                <div class="button circle" id="plus"><button onclick="operator_input('+')">＋</button></div>
+                <button class="button" id="0" onclick="value_input(0)">0</button>
+                <button class="button" id="space"></button>
+                <button class="button" id="dot" onclick="dot()">.</button>
+                <div class="button circle" id="equal"><button>＝</button></div>
+            </div>
+            
+            
+        </div>
+    </body>
+</html>

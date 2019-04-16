@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta http-equiv="content-type" content="text/html; charset=euc-kr" />
+
+<title>Time</title>
+
+    </head>
+    <style>
+        *{
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+            color:white;
+        }
+        @font-face{
+            font-family:'digital-clock-font';
+            src: url('./digital-7/digital-7.ttf');
+        }
+        body{
+            width:98%;
+            height:100%;
+            background:linear-gradient(to right,#060B47,#455B7A);
+        }
+        #back{
+            width:600px;
+            height:300px;
+            background-color:rgba(#026B7D,0.6);
+            margin:0 auto;
+            margin-top:200px;
+        }
+        #time{
+            font-family:'digital-clock-font';
+            font-size:90px;
+            width:230px;
+        }
+        #arrange{
+            padding-left:18px;
+        }
+        #which_day{
+            padding-left:18px;
+        }
+        #arrange>li{
+            list-style:none;
+            float:left;
+            margin:5px;
+        }
+        #AM_PM{
+            list-style: none;
+            padding-left:10px;
+            right:0px;
+            font-size:12px;
+            font-weight:800;
+            margin-top:45px;
+        }
+        #which_day li{
+            list-style:none;
+            padding-right:16px;
+            float:left;
+            font-size:15px;
+            font-weight: 550;
+            padding-bottom:0px;
+        }
+        #clock_box{
+            width: 350px;
+            height:130px;
+            padding-bottom:5px;
+            border-radius: 10px;
+            border-style: inset;
+            border-width:0.5px;
+            border-color:darkblue;
+            background-color:#030F29;
+            position:relative;
+            top:85px;
+            margin: 0 auto;
+        }
+        #clock_img{
+            margin-top:55px;
+            margin-right:6px;
+        }
+        #AM{opacity:0.2;}
+        #which_day li:not(#tue){opacity:0.2;}
+        #clock_an{
+            width:100px;
+            height:100px;
+            border-radius:50px;
+            background-color:black;
+        }
+        #pin{
+            position:relative;
+            background-color:white;
+            width:3px;
+            height:50px;
+            left:50px;
+        }
+        @-webkit-keyframes rot{
+            0%{-webkit-transform:rotate(0deg);}
+    100%{-webkit-transform:rotate(360deg);}
+        }
+        #clock_an:hover #pin{
+            transform-origin:bottom;
+            -webkit-animation: rot 4s linear infinite;
+            animation: rot 4s linear infinite;
+        }
+    </style>
+    <script>
+    function show_time()
+        {
+            var now=new Date; document.getElementById("time").innerHTML=now.getHours()%12+':'+("0"+now.getMinutes()).slice(-2)+':'+("0"+now.getSeconds()).slice(-2);
+        setTimeout("show_time()",1000);
+        }
+    </script>
+    
+<body onload="show_time();">
+    <div id="back">
+        <div id="clock_an">
+        <div id="pin"></div>
+        </div>
+    <div id="clock_box">
+        <div id="day">
+            <ul id="which_day">
+                <li id="mon">
+                MON
+                </li>
+                <li id="tue">
+                TUE
+                </li>
+                <li id="wed">
+                WED
+                </li>
+                <li id="thu">
+                THU
+                </li>
+                <li id="fri">
+                FRI
+                </li>
+                <li id="sat">
+                SAT
+                </li>
+                <li id="sun">
+                SUN
+                </li>
+            </ul>
+        
+        </div>
+    
+        <div id="time_box">
+            <ul id="arrange">
+                <li><img id="clock_img" src="clock_img.png" width=20px height=20px/></li>
+                
+                <li id="time"></li>
+                <li><ul id="AM_PM">
+                    <li id="AM">AM</li>
+                    <li id="PM">PM</li>
+                    </ul></li>
+            </ul>
+
+        </div>
+    
+    </div>
+    </div>                         
+  </body>
+</html>
