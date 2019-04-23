@@ -6,7 +6,7 @@
 <meta http-equiv="content-type" content="text/html"; charset="utf-8" />
 
 <title>Calculator</title>
-
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     </head>
     <style>
          *{
@@ -80,6 +80,9 @@
         .button:not(.circle){
             font-size:18px;
             font-weight:600;
+            margin:20px;
+            width:40px;
+            height:40px;
         }
         .circle button{
             width:50px;
@@ -121,36 +124,41 @@
         }
     </style>
     <script>
-        var str="";
-        var str2="";
-        function value_input(x){
-            str+=x;
-            str2+=x;
-            document.getElementById("input").innerHTML=str;
+        
+        function value_input(number){
+            $("#input").append(number)
         }
-        function operator_input(x){
-            str+=" "+x+" ";
-            if(x=="x")
-                str2+='*';
-            else if(x=="÷")
-                str2+='/';
-            else
-                str2+=x;
-            document.getElementById("input").innerHTML=str;
+        function operator_input(oper){
+            $("#input").append(" "+oper+" ");        
         }
         function reset(){
-            str="";
-            str2="";
-            document.getElementById("input").innerHTML=str;
-            document.getElementById("output").innerHTML="0";
+            $("#input").text("")
+            $("#output").text("0")
         }
         function dot(){
-            str+=".";
-            str2+=".";
-            document.getElementById("input").innerHTML=str;
+            $("#input").append(".")
         }
         function cal(){
-            document.getElementById("output").innerHTML=eval(str2);
+            var result;
+            var temp;
+            var par=$("#input").text().trim().split(" ")
+            var par_num=par.length;
+            console.log(par_num)
+            for(var i in par_num)
+                {
+                    if(par[par_num-i-1]=="+")
+                        result+=parseFloat(par[par_num-i])
+                    if(par[par_num-i-1]=="-")
+                        result-=parseFloat(par[par_num-i])
+                    if(par[par_num-i-1]=="x")
+                        {
+                            
+                        }
+                    if(par[par_num-i-1]=="÷")
+                    i+=2;
+                }
+            alert(result)
+            $("output").text(result)
         }
     </script>
     <body>
@@ -159,15 +167,11 @@
                 <div class="gray_dot"></div>
                 <div class="gray_dot"></div>
                 <div class="gray_dot"></div>
-                <p id="output">
-                   0
-                </p>
-                <p id="input">
-                    
-                </p>
+                <p id="output">0</p>
+                <p id="input"></p>
             </div>
             <div id="buttons">
-                <button onclick="reset()" class="button" id="C">C</button>
+                <button onclick="reset();" class="button" id="C">C</button>
                 <button class="button" id="pm">+/-</button>
                 <button class="button" id="percent">%</button>
                 <div class="button circle" id="divide"><button onclick="operator_input('÷')">÷</button></div>
