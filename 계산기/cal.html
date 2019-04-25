@@ -123,44 +123,7 @@
             opacity:0.3;
         }
     </style>
-    <script>
-        
-        function value_input(number){
-            $("#input").append(number)
-        }
-        function operator_input(oper){
-            $("#input").append(" "+oper+" ");        
-        }
-        function reset(){
-            $("#input").text("")
-            $("#output").text("0")
-        }
-        function dot(){
-            $("#input").append(".")
-        }
-        function cal(){
-            var result;
-            var temp;
-            var par=$("#input").text().trim().split(" ")
-            var par_num=par.length;
-            console.log(par_num)
-            for(var i in par_num)
-                {
-                    if(par[par_num-i-1]=="+")
-                        result+=parseFloat(par[par_num-i])
-                    if(par[par_num-i-1]=="-")
-                        result-=parseFloat(par[par_num-i])
-                    if(par[par_num-i-1]=="x")
-                        {
-                            
-                        }
-                    if(par[par_num-i-1]=="÷")
-                    i+=2;
-                }
-            alert(result)
-            $("output").text(result)
-        }
-    </script>
+    
     <body>
         <div id="calculator">
             <div id="screen">
@@ -171,29 +134,72 @@
                 <p id="input"></p>
             </div>
             <div id="buttons">
-                <button onclick="reset();" class="button" id="C">C</button>
+                <button class="button" id="C">C</button>
                 <button class="button" id="pm">+/-</button>
                 <button class="button" id="percent">%</button>
-                <div class="button circle" id="divide"><button onclick="operator_input('÷')">÷</button></div>
-                <button class="button" id="7" onclick="value_input(7)">7</button>
-                <button class="button" id="8" onclick="value_input(8)">8</button>
-                <button class="button" id="9" onclick="value_input(9)">9</button>
-                <div class="button circle" id="x"><button onclick="operator_input('x')">x</button></div>
-                <button class="button" id="4" onclick="value_input(4)">4</button>
-                <button class="button" id="5" onclick="value_input(5)">5</button>
-                <button class="button" id="6" onclick="value_input(6)">6</button>
-                <div class="button circle" id="minus"><button onclick="operator_input('-')">─</button></div>
-                <button class="button" id="1" onclick="value_input(1)">1</button>
-                <button class="button" id="2" onclick="value_input(2)">2</button>
-                <button class="button" id="3" onclick="value_input(3)">3</button>
-                <div class="button circle" id="plus"><button onclick="operator_input('+')">＋</button></div>
-                <button class="button" id="0" onclick="value_input(0)">0</button>
+                <div class="button circle" id="divide"><button class="oper">÷</button></div>
+                <button class="button value" id="7">7</button>
+                <button class="button value" id="8">8</button>
+                <button class="button value" id="9">9</button>
+                <div class="button circle" id="x"><button class="oper">x</button></div>
+                <button class="button value" id="4">4</button>
+                <button class="button value" id="5">5</button>
+                <button class="button value" id="6">6</button>
+                <div class="button circle" id="minus"><button class="oper">─</button></div>
+                <button class="button value" id="1">1</button>
+                <button class="button value" id="2">2</button>
+                <button class="button value" id="3">3</button>
+                <div class="button circle" id="plus"><button class="oper">＋</button></div>
+                <button class="button value" id="0">0</button>
                 <button class="button" id="space"></button>
-                <button class="button" id="dot" onclick="dot()">.</button>
-                <div class="button circle" id="equal" onclick="cal()"><button>＝</button></div>
+                <button class="button value" id=".">.</button>
+                <div class="button circle" id="equal"><button>＝</button></div>
             </div>
             
             
         </div>
+        <script>
+       $("#C").click(function(){
+           console.log("a");
+             $("#input").text("")
+            $("#output").text("0")
+        });
+        
+        $(".value").click(function(event){
+            $("#input").append($(event.target).attr("id"));
+        });
+        
+        $(".oper").click(function(event){
+            if($(event.target).html()=="─")
+                $("#input").append(" - ");
+            else
+                $("#input").append(" "+$(event.target.firstChild).text()+" ");
+        });
+        
+        $("#equal").click(function(){
+            var result=0.0;
+            var temp;
+            var par=$("#input").text().trim().split(" ");
+            var par_num=par.length;
+            for(i=0;i<par_num;)
+                {
+                    if(par[par_num-i-2]=="＋")
+                        result+=parseFloat(par[par_num-i-1]);
+                    else if(par[par_num-i-2]=="-")
+                        result-=parseFloat(par[par_num-i-1]);
+                    else if(par[par_num-i-2]=="x")
+                        par[par_num-i-3]=parseFloat(par[par_num-i-3])*parseFloat(par[par_num-i-1]);
+                    else if(par[par_num-i-2]=="÷")
+                        par[par_num-i-3]=parseFloat(par[par_num-i-3])/parseFloat(par[par_num-i-1]);
+                    i+=2;
+                }
+            result+=parseFloat(par[0]);
+            if(!isNaN(result))
+                $("#output").text(result);
+            else
+                $("#output").text("Invalid input");
+        });
+        
+    </script>
     </body>
 </html>
