@@ -1,0 +1,113 @@
+         *{
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+             -ms-user-select: none; -moz-user-select: -moz-none; -webkit-user-select: none; -khtml-user-select: none; user-select:none;
+        }
+        body{
+            background-color:rgba(16,16,16,0.1);
+        }
+        #calculator{
+            position:relative;
+            width:320px;
+            height:520px;
+            margin:0 auto;
+            top:100px;
+            border-radius:7px;
+            box-shadow: 5px 5px 50px -20px;
+            
+        }
+        #buttons{
+            position:relative;
+            width:320px;
+            height:400px;
+            background:white;
+            border-bottom-left-radius:7px;
+            border-bottom-right-radius:7px;
+        }
+        .button{
+            width:80px;
+            height:80px;
+            margin:0;
+            padding:0;
+            border:0;
+            background:transparent;
+            float:left;
+        }
+        #screen{
+            width:320px;
+            height:120px;
+            padding:5px;
+            background:#f8f8f8;
+            border-top-left-radius:7px;
+            border-top-right-radius: 7px;
+        }
+        p{
+            width:95%;
+            margin-top:15px;
+            margin-bottom:0px;
+            margin-right:5%;
+            text-align:right;
+        }
+        #output{
+            font-size:30px;
+            font-weight: 600;
+        }
+        #input{
+            font-weight:600;
+            opacity:0.4;
+        }
+        .gray_dot{
+            width:10px;
+            height:10px;
+            border-radius:5px;
+            background:gray;
+            margin:5px;
+            float:left;
+            opacity:0.3;
+        }
+        .button:not(.circle){
+            font-size:18px;
+            font-weight:600;
+            margin:20px;
+            width:40px;
+            height:40px;
+        }
+        .circle button{
+            width:50px;
+            height:50px;
+            margin:15px;
+            border-radius:25px;
+            padding-bottom:8px;
+            border:0;
+            color:white;
+            font-size:30px;
+            font-weight:550;
+            text-align:center;
+            box-shadow: 3px 3px 7px 0px #ccc;
+        }
+        #x button{
+            padding-bottom:5px;
+            background:#f47474;
+        }
+        #divide button{
+            padding-bottom:5px;
+            background:#d058e8;
+        }
+        #minus button{
+            padding-bottom:5px;
+            font-weight:800;
+            background:#7ab4f7;
+        }
+        #plus button{
+            background:#f58e24;
+        }
+        #equal button{
+            background:#24cb83;
+        }
+        button{
+           outline:0;
+        }
+        button:active{
+            opacity:0.3;
+        }
